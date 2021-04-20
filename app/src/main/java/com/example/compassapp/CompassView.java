@@ -8,6 +8,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 public class CompassView extends View {
+    public int azimuth;
     Bitmap bitmap;
     public CompassView(Context context, AttributeSet attrs) {
         super(context,attrs);
@@ -19,8 +20,10 @@ public class CompassView extends View {
         super.onDraw(canvas);
         int cx = getWidth()/2;
         int cy =getHeight()/2;
+
         int x0 = cx-bitmap.getWidth()/2;
         int y0 = cy-bitmap.getHeight()/2;
+        canvas.rotate(-azimuth,cx,cy);
 
         canvas.drawBitmap(bitmap,x0,y0,null);
     }
